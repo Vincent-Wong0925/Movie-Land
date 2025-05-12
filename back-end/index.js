@@ -1,6 +1,13 @@
-const express = require('express')
-const app = express()
-const port = 3000
+const express = require('express');
+const filmRouter = require('./routes/filmRouter');
+
+const app = express();
+const port = 3000;
+
+app.use(express.json());
+app.use(express.urlencoded({extended: false}));
+
+app.use('/filmList', filmRouter);
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
