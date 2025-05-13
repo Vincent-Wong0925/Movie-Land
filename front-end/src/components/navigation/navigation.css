@@ -1,0 +1,26 @@
+.navigation {
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 4rem;
+    padding: 1rem 0;
+    box-sizing: border-box;
+}
+
+.nav-item {
+    margin: .5rem auto;
+    height: 2rem;
+    width: 2rem;
+    padding: .5rem;
+    border-radius: 20%;
+}
+
+.nav-link:hover {
+    background-color: lime;
+    color: black;
+}
