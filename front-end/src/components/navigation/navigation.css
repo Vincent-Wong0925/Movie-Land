@@ -3,7 +3,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     height: 100%;
@@ -13,14 +13,22 @@
 }
 
 .nav-item {
-    margin: .5rem auto;
+    margin: .5rem 0;
     height: 2rem;
     width: 2rem;
-    padding: .5rem;
-    border-radius: 20%;
+    padding: .7rem;
+    border-radius: 50%;
+    transition: 300ms;
+}
+
+.nav-link {
+    background-color: darkgreen;
 }
 
 .nav-link:hover {
-    background-color: lime;
-    color: black;
+    border-radius: 10%;
+}
+
+.nav-link:active {
+    transform: scale(0.8);
 }
