@@ -19,6 +19,7 @@
     padding: .7rem;
     border-radius: 50%;
     transition: 300ms;
+    position: relative;
 }
 
 .nav-link {
@@ -31,4 +32,21 @@
 
 .nav-link:active {
     transform: scale(0.8);
+}
+
+.nav-tooltip {
+    position: absolute;
+    left: 4rem;
+    top: 1rem;
+    background-color: black;
+    padding: .2rem .3rem;
+    border-radius: .3rem;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity .7s;
+}
+
+.nav-link:hover .nav-tooltip {
+    visibility: visible;
+    opacity: 1;
 }
