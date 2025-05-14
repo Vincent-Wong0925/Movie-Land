@@ -1,0 +1,59 @@
+.Card {
+    background-color: black;
+    height: 18rem;
+    width: 12rem;
+    margin: 1rem;
+    position: relative;
+    border-radius: 5px;
+    transition: .3s;
+}
+
+.Card:hover {
+    transform: scale(1.05);
+}
+
+.Card:active {
+    transform: scale(0.95);
+}
+
+.card-link {
+    display: flex;
+    flex-direction: column;
+    transition: .3s;
+}
+
+.card-img {
+    height: 100%;
+    object-fit: contain;
+    border-radius: 5px;
+}
+
+.card-info {
+    position: absolute;
+    background-color: black;
+    color: white;
+    bottom: 0;
+    width: 100%;
+    padding: .5rem;
+    box-sizing: border-box;
+    border-radius: 0 0 5px 5px;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.card-link:hover .card-info {
+    visibility: visible;
+    opacity: .7;
+}
+
+.Card p {
+    margin: .5rem 0;
+}
+
+.card-title {
+    font-weight: bold;
+}
+
+.card-popularity {
+
+}
