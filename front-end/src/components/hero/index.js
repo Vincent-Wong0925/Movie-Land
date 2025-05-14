@@ -13,7 +13,7 @@ const Hero = () => {
             </div>
             <div className="hero-content white">
                 <h1 className="bold">Welcome to <span className="lime">MovieLand</span></h1>
-                <p>A place to find and rate your favorite movies</p>
+                <p>A place to find and rate your favorite movie.</p>
                 <NavLink><button className="login-btn bold">Login</button></NavLink>
             </div>
         </div>
