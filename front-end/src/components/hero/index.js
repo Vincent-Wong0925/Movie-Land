@@ -11,7 +11,7 @@ const Hero = () => {
                     <path d="M19.4849 9.18422C19.4949 9.28813 19.5 9.39347 19.5 9.5V17.5C19.5 17.6066 19.4949 17.7119 19.4848 17.8158L20.5663 18.5224C21.3977 19.0655 22.5 18.469 22.5 17.4759V9.52416C22.5 8.53106 21.3977 7.93453 20.5663 8.47769L19.4849 9.18422Z" />
                 </svg>
             </div>
-            <div className="hero-content white">
+            <div className="hero-content">
                 <h1 className="bold">Welcome to <span className="lime">MovieLand</span></h1>
                 <p>A place to find and rate your favorite movie.</p>
                 <NavLink><button className="login-btn bold">Login</button></NavLink>

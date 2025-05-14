@@ -1,5 +1,6 @@
 .FilmSlider {
     width: 100%;
-    padding: 3rem;
+    padding-inline: 3rem;
+    padding-bottom: 2rem;
     box-sizing: border-box;
 }

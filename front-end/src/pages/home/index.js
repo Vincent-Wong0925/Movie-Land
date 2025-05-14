@@ -19,7 +19,21 @@ const Home = () => {
     return (
         <div className="Home">
             <Hero />
-            <FilmSlider films={films}/>
+
+            <section className="popular-films">
+                <h1>Popular</h1>
+                <FilmSlider films={films}/>
+            </section>
+
+            <section className="top-rated-films">
+                <h1>Top Rated</h1>
+                <FilmSlider films={films}/>
+            </section>
+
+            <section className="genres">
+                <h1>Discover</h1>
+                <FilmSlider films={films}/>
+            </section>
         </div>
     )
 }
