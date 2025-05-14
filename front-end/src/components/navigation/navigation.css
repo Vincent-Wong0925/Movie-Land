@@ -1,8 +1,5 @@
 .navigation {
     background-color: black;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     position: fixed;
     top: 0;
     left: 0;
@@ -10,6 +7,12 @@
     width: 4rem;
     padding: 1rem 0;
     box-sizing: border-box;
+}
+
+.nav-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .nav-item {
