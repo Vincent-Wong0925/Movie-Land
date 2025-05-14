@@ -1,0 +1,35 @@
+.Genres-container {
+    width: 100%;
+    padding-inline: 3rem;
+    padding-bottom: 2rem;
+    box-sizing: border-box;
+}
+
+.genres-card {
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+.genres-link {
+    text-decoration: none;
+    color: lime;
+    border: lime solid;
+    border-radius: 5px;
+    box-sizing: border-box;
+    padding: .5rem;
+    width: 100%;
+    height: 100%;
+    display: block;
+    font-size: 1.5rem;
+    box-shadow: 5px 5px 5px green;
+    font-weight: bold;
+    transition: .3s;
+}
+
+.genres-link:hover {
+    transform: scale(1.05);
+}
+
+.genres-link:active {
+    transform: scale(0.95);
+}

@@ -2,6 +2,7 @@ import React from "react";
 import './home.css';
 import FilmSlider from "../../components/slider";
 import Hero from "../../components/hero";
+import Genres from "../../components/genres";
 
 const films = [
     {id: '1', title: 'film title', release_date: '2008-11-21', popularity: 82.5, poster_path: '/1E5baAaEse26fej7uHcjOgEE2t2.jpg'},
@@ -32,7 +33,7 @@ const Home = () => {
 
             <section className="genres">
                 <h1>Discover</h1>
-                <FilmSlider films={films}/>
+                <Genres />
             </section>
         </div>
     )
