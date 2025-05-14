@@ -3,6 +3,7 @@ import './card.css';
 import { NavLink } from "react-router";
 
 const Card = ({ id, poster, title, release_date, popularity }) => {
+    console.log(poster);
     return (
         <div className="Card" id={id}>
             <NavLink className="card-link">
