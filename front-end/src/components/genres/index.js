@@ -5,8 +5,6 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { NavLink } from "react-router";
 
-const placeholders = ['genre','genre','genre','genre','genre','genre','genre','genre','genre','genre','genre',];
-
 const Genres = ({ genres }) => {
     const settings = {
         speed: 500,
@@ -41,10 +39,10 @@ const Genres = ({ genres }) => {
     return (
         <div className="Genres-container">
             <Slider {...settings}>
-                {placeholders.map(genre => (
-                    <div className="genres-card">
+                {genres.map(genre => (
+                    <div className="genres-card" id={genre.id}>
                         <NavLink className="genres-link">
-                            {genre}
+                            {genre.name}
                         </NavLink>
                     </div>
                 ))}

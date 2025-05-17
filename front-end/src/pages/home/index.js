@@ -6,6 +6,7 @@ import Genres from "../../components/genres";
 import { useDispatch, useSelector } from "react-redux";
 import { getPopular, selectPopular } from "../../store/features/popularSlice";
 import { getTopRated, selectTopRated } from "../../store/features/topRatedSlice";
+import { getGenres, selectGenres } from "../../store/features/genreSlice";
 
 const Home = () => {
     const dispatch = useDispatch();
@@ -13,10 +14,12 @@ const Home = () => {
     useEffect(() => {
         dispatch(getPopular());
         dispatch(getTopRated());
+        dispatch(getGenres());
     }, [dispatch]);
 
     const popular = useSelector(selectPopular);
     const topRated = useSelector(selectTopRated);
+    const genres = useSelector(selectGenres);
 
     return (
         <div className="Home">
@@ -34,7 +37,7 @@ const Home = () => {
 
             <section className="genres">
                 <h1>Discover</h1>
-                <Genres />
+                <Genres genres={genres} />
             </section>
         </div>
     )
