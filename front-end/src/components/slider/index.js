@@ -44,7 +44,7 @@ const FilmSlider = ({ films }) => {
     return (
         <div className="FilmSlider">
             <Slider {...settings}>
-                {films.map(film => <Card id={film.id} title={film.title} poster={`https://image.tmdb.org/t/p/w500${film.poster_path}`} popularity={film.popularity} release_date={film.release_date} />)}
+                {films.map(film => <Card id={film.id} title={film.title} poster={`https://image.tmdb.org/t/p/w500${film.poster_path}`} score={film.vote_average * 10} release_date={film.release_date} />)}
             </Slider>
         </div>
     )
