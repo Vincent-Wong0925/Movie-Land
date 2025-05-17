@@ -1,6 +1,6 @@
 import React from "react";
 import './hero.css';
-import { NavLink } from "react-router";
+import { Link } from "react-router";
 
 const Hero = () => {
     return (
@@ -14,7 +14,7 @@ const Hero = () => {
             <div className="hero-content">
                 <h1 className="bold">Welcome to <span className="lime">MovieLand</span></h1>
                 <p>A place to find and rate your favorite movie.</p>
-                <NavLink><button className="login-btn bold">Login</button></NavLink>
+                <Link><button className="login-btn bold">Login</button></Link>
             </div>
         </div>
     )

@@ -3,7 +3,7 @@ import './genres.css';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import { NavLink } from "react-router";
+import { Link } from "react-router";
 
 const Genres = ({ genres }) => {
     const settings = {
@@ -41,9 +41,9 @@ const Genres = ({ genres }) => {
             <Slider {...settings}>
                 {genres.map(genre => (
                     <div className="genres-card" id={genre.id}>
-                        <NavLink className="genres-link">
+                        <Link className="genres-link">
                             {genre.name}
-                        </NavLink>
+                        </Link>
                     </div>
                 ))}
             </Slider>
