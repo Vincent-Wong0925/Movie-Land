@@ -1,0 +1,25 @@
+.detail-container {
+    display: flex;
+    padding: 2rem;
+}
+
+.detail-poster {
+    height: 30rem;
+    margin-right: 2rem;
+}
+
+.Detail h1 {
+    font-size: 3rem;
+}
+
+.Detail h2 {
+    font-size: 2rem;
+}
+
+.detail-score {
+    font-size: 1.5rem;
+}
+
+.detail-tagline {
+    color: lightgray;
+}

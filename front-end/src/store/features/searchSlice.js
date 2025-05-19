@@ -22,7 +22,9 @@ export const getMovieById = createAsyncThunk(
 export const searchSlice = createSlice({
     name: 'search',
     initialState: {
-        result: {},
+        result: {
+            genres: [],
+        },
         searchLoading: false,
         searchError: false
     },
@@ -49,5 +51,6 @@ export const searchSlice = createSlice({
 });
 
 export const selectSearch = state => state.search.result;
+export const selectSearchLoading = state => state.search.searchLoading;
 
 export default searchSlice.reducer;

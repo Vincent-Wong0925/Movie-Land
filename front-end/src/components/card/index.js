@@ -5,7 +5,7 @@ import { Link } from "react-router";
 const Card = ({ id, poster, title, release_date, score }) => {
     return (
         <div className="Card" id={id}>
-            <Link className="card-link">
+            <Link to={`/detail/${id}`} className="card-link">
                 <img className="card-img" src={poster} alt="film poster" />
                 <span className="card-info">
                     <p className="card-title">{title}</p>
