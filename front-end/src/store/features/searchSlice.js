@@ -32,7 +32,7 @@ export const searchMovieByName = createAsyncThunk(
         };
 
         const response = await fetch(url, options);
-        const jsonResponse = response.json();
+        const jsonResponse = await response.json();
 
         return jsonResponse;
     }

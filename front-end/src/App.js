@@ -3,11 +3,13 @@ import './App.css';
 import Root from './components/root';
 import Home from './pages/home';
 import Detail from './pages/detail';
+import Search from './pages/search';
 
 const router = createBrowserRouter(createRoutesFromElements(
   <Route path='/' element={<Root />}>
     <Route index element={<Home />} />
     <Route path='/detail/:id' element={<Detail />} />
+    <Route path='/search' element={<Search />} />
   </Route>
 ))
 
