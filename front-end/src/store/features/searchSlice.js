@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const getMovieById = createAsyncThunk(
-    'search/getMovieById',
+    'search/fetchMovieById',
     async (id) => {
         const url = `https://api.themoviedb.org/3/movie/${id}?language=en-US`;
         const options = {
@@ -34,13 +34,13 @@ export const searchSlice = createSlice({
                 state.searchError = false;
             })
 
-            .addCase(getMovieById, (state, action) => {
+            .addCase(getMovieById.fulfilled, (state, action) => {
                 state.searchLoading = false;
                 state.searchError = false;
                 state.result = action.payload;
             })
 
-            .addCase(getMovieById, (state) => {
+            .addCase(getMovieById.rejected, (state) => {
                 state.searchLoading = false;
                 state.searchError = true;
                 console.log('Something is wrong with searchSlice');
