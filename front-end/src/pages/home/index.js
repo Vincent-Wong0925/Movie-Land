@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import './home.css';
+import '../../index.css';
 import FilmSlider from "../../components/slider";
 import Hero from "../../components/hero";
 import Genres from "../../components/genres";
@@ -22,7 +23,7 @@ const Home = () => {
     const genres = useSelector(selectGenres);
 
     return (
-        <div className="Home">
+        <div className="Home page">
             <Hero />
 
             <section className="popular-films">
