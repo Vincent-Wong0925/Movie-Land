@@ -21,18 +21,18 @@ const Navigation = () => {
                             <path fillRule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
                         </svg>
                         <div className="nav-tooltip">
-                            Tooltip
+                            Account
                         </div>
                     </NavLink>
                 </li>
 
                 <li className="nav-item nav-link white">
-                    <NavLink className="white">
+                    <NavLink to='/' className="white">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="bi bi-film" viewBox="0 0 16 16">
                             <path d="M0 1a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1zm4 0v6h8V1zm8 8H4v6h8zM1 1v2h2V1zm2 3H1v2h2zM1 7v2h2V7zm2 3H1v2h2zm-2 3v2h2v-2zM15 1h-2v2h2zm-2 3v2h2V4zm2 3h-2v2h2zm-2 3v2h2v-2zm2 3h-2v2h2z" />
                         </svg>
                         <div className="nav-tooltip">
-                            Tooltip
+                            Home
                         </div>
                     </NavLink>
                 </li>
@@ -43,7 +43,7 @@ const Navigation = () => {
                             <path fillRule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314" />
                         </svg>
                         <div className="nav-tooltip">
-                            Tooltip
+                            Favorite
                         </div>
                     </NavLink>
                 </li>
