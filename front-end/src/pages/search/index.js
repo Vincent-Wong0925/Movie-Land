@@ -3,19 +3,24 @@ import './search.css';
 import '../../index.css';
 import { Link, useSearchParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
-import { searchMovieByName, selectSearch, selectSearchLoading } from "../../store/features/searchSlice";
+import { searchMovieByGenre, searchMovieByName, selectSearch, selectSearchLoading } from "../../store/features/searchSlice";
 
 const Search = () => {
     const [searchParams, setSearchParams] = useSearchParams();
     const movieName = searchParams.get('name');
-    const genre = searchParams.get('genre');
+    const genre_id = searchParams.get('genre');
     const dispatch = useDispatch();
     const searchResult = useSelector(selectSearch);
     const searchLoading = useSelector(selectSearchLoading);
 
     useEffect(() => {
-        dispatch(searchMovieByName(movieName));
-    },[dispatch, movieName]);
+        if(movieName) {
+            dispatch(searchMovieByName(movieName));
+        }
+        if(genre_id) {
+            dispatch(searchMovieByGenre(genre_id));
+        }
+    },[dispatch, movieName, genre_id]);
 
     if (searchLoading) {
         return(
