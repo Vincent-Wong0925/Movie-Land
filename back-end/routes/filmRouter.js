@@ -4,8 +4,8 @@ const db = require('../db');
 const filmRouter = express.Router();
 
 //get film_list of a user
-filmRouter.get('/', async (req, res, next) => {
-    const { user_id } = req.body;
+filmRouter.get('/:user_id', async (req, res, next) => {
+    const { user_id } = req.params;
 
     try {
         const result = await db.query('SELECT * FROM film_list WHERE user_id = $1', [user_id]);

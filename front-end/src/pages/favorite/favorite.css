@@ -1,0 +1,28 @@
+.Favorite h1 {
+    margin-left: 3rem;
+}
+
+.favorite-card {
+    display: flex;
+    margin: 1rem 3rem;
+    background-color: gray;
+    text-decoration: none;
+    color: white;
+    align-items: center;
+    border-radius: 5px;
+    height: 10rem;
+}
+
+.favorite-card-img {
+    height: 100%;
+    margin-right: 1rem;
+    border-radius: 5px 0 0 5px;
+}
+
+.favorite-card-title {
+    font-size: 2rem;
+}
+
+.favorite-card-item {
+    margin: 0;
+}
