@@ -4,6 +4,7 @@ import '../../index.css';
 import { useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { getMovieById, selectSearch, selectSearchLoading } from "../../store/features/searchSlice";
+import Comments from "../../components/comments";
 
 const Detail = () => {
     const { id } = useParams();
@@ -38,6 +39,7 @@ const Detail = () => {
                     <p className="detail-overview">{movie.overview}</p>
                 </div>
             </div>
+            <Comments movie_id={id} />
         </div>
     )
 }

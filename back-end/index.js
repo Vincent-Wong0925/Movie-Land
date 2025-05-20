@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const filmRouter = require('./routes/filmRouter');
 const commentRouter = require('./routes/commentRouter');
 
@@ -7,6 +8,10 @@ const port = 3000;
 
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
+
+app.use(cors({
+  origin: 'http://localhost:3001'
+}));
 
 app.use('/filmList', filmRouter);
 app.use('/comment', commentRouter);
