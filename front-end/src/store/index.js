@@ -3,12 +3,14 @@ import popularReducer from './features/popularSlice';
 import topRatedReducer from './features/topRatedSlice';
 import genresReducer from './features/genreSlice';
 import searchReducer from './features/searchSlice';
+import userReducer from './features/userSlice';
 
 export const store = configureStore({
     reducer: {
         popular: popularReducer,
         topRated: topRatedReducer,
         genres: genresReducer,
-        search: searchReducer
+        search: searchReducer,
+        user: userReducer,
     }
 })

@@ -29,6 +29,7 @@ authRouter.post('/register', async (req, res, next) => {
 });
 
 authRouter.post('/login', async (req, res, next) => {
+    console.log(req.body);
     passport.authenticate('local', (err, user, info) => {
         if (err) {
             return res.status(500).json({ error: 'Something went wrong' });

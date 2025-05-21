@@ -46,3 +46,20 @@ export const fetchTmdbMovie = async (film_id) => {
     const jsonResponse = await response.json();
     return jsonResponse;
 }
+
+export const loginUser = async (email, password) => {
+    const response = await fetch(`${baseURL}/login`, {
+        method: 'POST',
+        headers: {
+            credentials: 'include',
+            accept: 'application/json',
+            'Content-type': 'application/json'
+        },
+        body: JSON.stringify({
+            email,
+            password
+        })
+    });
+    const jsonResponse = await response.json();
+    return jsonResponse;
+}
