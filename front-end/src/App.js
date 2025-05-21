@@ -6,6 +6,7 @@ import Detail from './pages/detail';
 import Search from './pages/search';
 import Favorite from './pages/favorite';
 import Login from './pages/login';
+import Register from './pages/register';
 
 const router = createBrowserRouter(createRoutesFromElements(
   <Route path='/' element={<Root />}>
@@ -14,6 +15,7 @@ const router = createBrowserRouter(createRoutesFromElements(
     <Route path='/search' element={<Search />} />
     <Route path='/favorite/:user_id' element={<Favorite />} />
     <Route path='/login' element={<Login />} />
+    <Route path='/register' element={<Register />} />
   </Route>
 ))
 

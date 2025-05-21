@@ -29,18 +29,26 @@
     outline: none;
 }
 
+.login-link {
+    text-decoration: none;
+    text-align: center;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 .login-btn {
     background-color: transparent;
     color: lime;
     border: lime solid 2px;
     border-radius: 2rem;
     font-size: 1.5rem;
-    padding-inline: 1rem;
+    padding-block: .5rem;
     width: 100%;
     margin: .5rem auto;
     display: block;
     cursor: pointer;
     transition: .3s;
+    font-family: "'Times New Roman', Times, serif";
 }
 
 .login-btn:hover {
