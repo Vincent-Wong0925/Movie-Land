@@ -63,3 +63,26 @@ export const loginUser = async (email, password) => {
     const jsonResponse = await response.json();
     return jsonResponse;
 }
+
+export const registerUser = async (username, email, password) => {
+    try {
+        const response = await fetch(`${baseURL}/register`, {
+            method: 'POST',
+            headers: {
+                credentials: 'include',
+                accept: 'application/json',
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify({
+                username,
+                email,
+                password,
+            })
+        });
+        const jsonResponse = await response.json();
+
+        return jsonResponse;
+    } catch (err) {
+        return ({ error: err });
+    }
+}

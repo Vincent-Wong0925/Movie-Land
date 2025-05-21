@@ -9,11 +9,12 @@ import { selectAuthenticated, setAuthenticated, setUser } from "../../store/feat
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [message, setMessage] = useState('');
     const authenticated = useSelector(selectAuthenticated);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const handleSubmit = async (e) => {
+    const handleLoginSubmit = async (e) => {
         e.preventDefault();
 
         try {
@@ -26,11 +27,14 @@ const Login = () => {
             dispatch(setUser(response));
             dispatch(setAuthenticated(true));
 
-            navigate(-1);
+            navigate('/');
         } catch (err) {
             console.log(err);
             dispatch(setAuthenticated(false));
             dispatch(setUser({}));
+            setEmail('');
+            setPassword('');
+            setMessage(err.message);
 
             navigate('/login');
         }
@@ -40,11 +44,12 @@ const Login = () => {
         <div className="Login page">
             <div className="login-container">
                 <h1>Login to account</h1>
-                <Form onSubmit={handleSubmit}>
+                <Form onSubmit={handleLoginSubmit}>
                     <label className="login-label" htmlFor="form-email">Email</label><br />
                     <input className="login-input" id="form-email" value={email} onChange={e => setEmail(e.target.value)} type="email" required /><br />
                     <label className="login-label" htmlFor="form-password">Password</label><br />
                     <input className="login-input" id="form-password" value={password} onChange={e => setPassword(e.target.value)} type="password" required /><br />
+                    {message !== '' && <p className="login-message">{message}</p>}
                     <input className="login-btn" type="submit" value="Login" />
                     <Link className="login-btn login-link" to='/register'>Register a new account</Link>
                 </Form>

@@ -62,3 +62,9 @@
     background-color: green;
     border-color: green;
 }
+
+.login-message {
+    color: red;
+    margin: 0;
+    font-size: 1rem;
+}

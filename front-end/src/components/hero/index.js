@@ -14,7 +14,7 @@ const Hero = () => {
             <div className="hero-content">
                 <h1 className="bold">Welcome to <span className="lime">MovieLand</span></h1>
                 <p>A place to find and rate your favorite movie.</p>
-                <Link><button className="hero-login-btn bold">Login</button></Link>
+                <Link to='/login' className="hero-login-btn bold">Login</Link>
             </div>
         </div>
     )
