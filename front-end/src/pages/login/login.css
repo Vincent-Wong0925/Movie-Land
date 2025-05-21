@@ -1,0 +1,56 @@
+.login-container {
+    border: lime solid 2px;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px green;
+    margin: 4rem auto;
+    width: 30rem;
+    padding: 2rem;
+    color: lime;
+    font-size: 1.5rem;
+}
+
+.login-container h1 {
+    margin: 0;
+    margin-bottom: 1rem;
+}
+
+.login-input {
+    background-color: transparent;
+    border: lime solid 1px;
+    border-radius: 5px;
+    padding: .3rem;
+    color: white;
+    width: 100%;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.login-input:focus {
+    outline: none;
+}
+
+.login-btn {
+    background-color: transparent;
+    color: lime;
+    border: lime solid 2px;
+    border-radius: 2rem;
+    font-size: 1.5rem;
+    padding-inline: 1rem;
+    width: 100%;
+    margin: .5rem auto;
+    display: block;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.login-btn:hover {
+    background-color: lime;
+    color: rgb(70, 70, 70);
+    transform: scale(1.05);
+}
+
+.login-btn:active {
+    transform: scale(0.95);
+    background-color: green;
+    border-color: green;
+}

@@ -5,6 +5,7 @@ import Home from './pages/home';
 import Detail from './pages/detail';
 import Search from './pages/search';
 import Favorite from './pages/favorite';
+import Login from './pages/login';
 
 const router = createBrowserRouter(createRoutesFromElements(
   <Route path='/' element={<Root />}>
@@ -12,6 +13,7 @@ const router = createBrowserRouter(createRoutesFromElements(
     <Route path='/detail/:id' element={<Detail />} />
     <Route path='/search' element={<Search />} />
     <Route path='/favorite/:user_id' element={<Favorite />} />
+    <Route path='/login' element={<Login />} />
   </Route>
 ))
 
