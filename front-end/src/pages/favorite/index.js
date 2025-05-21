@@ -35,6 +35,14 @@ const Favorite = () => {
             .catch(err => console.log(err));
     }, [user_id]);
 
+    if (!filmList) {
+        return (
+            <div className="Error page">
+                Something went wrong
+            </div>
+        )
+    }
+    
     return (
         <div className="Favorite page">
             <h1 className="lime">Favorite movies</h1>
