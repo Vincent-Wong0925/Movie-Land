@@ -5,6 +5,7 @@ const filmRouter = require('./routes/filmRouter');
 const commentRouter = require('./routes/commentRouter');
 const passport = require('passport');
 const authRouter = require('./routes/authRouter');
+const { ensureAuthenticated } = require('./middleware/auth');
 
 const app = express();
 const port = 3000;
@@ -12,22 +13,25 @@ const port = 3000;
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
-app.use(session({
-  secret: 'my-secret',
-  resave: false,
-  saveUninitialized: false,
-}));
-
-app.use(passport.initialize());
-app.use(passport.session());
-
 app.use(cors({
   origin: 'http://localhost:3001',
   credentials: true,
 }));
 
+app.use(session({
+  secret: 'my-secret',
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    maxAge: 1000*60*60*24,
+  }
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use('/', authRouter);
-app.use('/filmList', filmRouter);
+app.use('/filmList', ensureAuthenticated, filmRouter);
 app.use('/comment', commentRouter);
 
 app.get('/', (req, res) => {

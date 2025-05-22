@@ -19,7 +19,10 @@ export const fetchComments = async (film_id) => {
 
 export const fetchFilmList = async (user_id) => {
     try {
-        const response = await fetch(`${baseURL}/filmList/${user_id}`, { method: 'GET' });
+        const response = await fetch(`${baseURL}/filmList/${user_id}`, { 
+            method: 'GET',
+            credentials: 'include'
+        });
         const jsonResponse = await response.json();
 
         if (!jsonResponse.error) {
@@ -51,10 +54,10 @@ export const loginUser = async (email, password) => {
     const response = await fetch(`${baseURL}/login`, {
         method: 'POST',
         headers: {
-            credentials: 'include',
             accept: 'application/json',
             'Content-type': 'application/json'
         },
+        credentials: 'include',
         body: JSON.stringify({
             email,
             password

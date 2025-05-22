@@ -35,7 +35,7 @@ const Favorite = () => {
 
     useEffect(() => {
         if(!isAuthenticated) {
-            return navigate('/login');
+            navigate('/login');
         }
         
         fetchFilmList(user.id)

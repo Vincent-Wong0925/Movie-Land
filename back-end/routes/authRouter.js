@@ -2,8 +2,8 @@ const express = require('express');
 const bcrypt = require('bcrypt');
 const db = require('../db');
 const passport = require('passport');
-const { ensureAuthenticated } = require('../middleware/auth');
 require('../passport/passport');
+const { ensureAuthenticated } = require('../middleware/auth');
 
 const authRouter = express.Router();
 
@@ -29,7 +29,6 @@ authRouter.post('/register', async (req, res, next) => {
 });
 
 authRouter.post('/login', async (req, res, next) => {
-    console.log(req.body);
     passport.authenticate('local', (err, user, info) => {
         if (err) {
             return res.status(500).json({ error: 'Something went wrong' });
@@ -43,7 +42,7 @@ authRouter.post('/login', async (req, res, next) => {
             if (error) { 
                 return res.status(500).json({ error: 'Something went wrong' }); 
             }
-
+            
             return res.status(200).json({id: user.id, username: user.username, email: user.email});
         });
     })(req, res)
