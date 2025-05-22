@@ -72,10 +72,10 @@ export const registerUser = async (username, email, password) => {
         const response = await fetch(`${baseURL}/register`, {
             method: 'POST',
             headers: {
-                credentials: 'include',
                 accept: 'application/json',
                 'Content-type': 'application/json'
             },
+            credentials: 'include',
             body: JSON.stringify({
                 username,
                 email,
@@ -87,5 +87,39 @@ export const registerUser = async (username, email, password) => {
         return jsonResponse;
     } catch (err) {
         return ({ error: err });
+    }
+}
+
+export const logoutUser = async () => {
+    try {
+        const response = await fetch(`${baseURL}/logout`, {
+            method: 'GET',
+            credentials: 'include',
+        });
+        
+        if (response.error) {
+            throw new Error(response.error);
+        }
+
+        return ('Logout successfully');
+    } catch(err) {
+        return ({error: err});
+    }
+}
+
+export const fetchUser = async () => {
+    try {
+        const response = await fetch(`${baseURL}/me`, {
+            method: 'GET',
+            credentials: 'include'
+        });
+        const jsonResponse = await response.json();
+
+        if (jsonResponse.error) {
+            throw new Error(jsonResponse.error);
+        }
+        return jsonResponse;
+    } catch(err) {
+        return ({error: err});
     }
 }

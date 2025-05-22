@@ -1,0 +1,28 @@
+.profile-container {
+    padding: 2rem;
+    font-size: 1.5rem;
+    color: lime;
+}
+
+.profile-logout-btn {
+    background-color: transparent;
+    border: red solid 1px;
+    border-radius: 2rem;
+    color: red;
+    padding-block: .5rem;
+    padding-inline: 1rem;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.profile-logout-btn:hover {
+    background-color: red;
+    color: #3f3f3f;
+    transform: scale(1.05);
+}
+
+.profile-logout-btn:active {
+    transform: scale(0.95);
+    background-color: darkred;
+    border-color: darkred;
+}

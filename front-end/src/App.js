@@ -7,6 +7,7 @@ import Search from './pages/search';
 import Favorite from './pages/favorite';
 import Login from './pages/login';
 import Register from './pages/register';
+import Profile from './pages/profile';
 
 const router = createBrowserRouter(createRoutesFromElements(
   <Route path='/' element={<Root />}>
@@ -16,6 +17,7 @@ const router = createBrowserRouter(createRoutesFromElements(
     <Route path='/favorite' element={<Favorite />} />
     <Route path='/login' element={<Login />} />
     <Route path='/register' element={<Register />} />
+    <Route path='/profile' element={<Profile />} />
   </Route>
 ))
 
