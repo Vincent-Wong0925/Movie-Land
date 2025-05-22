@@ -1,8 +1,12 @@
 import React from "react";
 import './hero.css';
 import { Link } from "react-router";
+import { useSelector } from "react-redux";
+import { selectAuthenticated } from "../../store/features/userSlice";
 
 const Hero = () => {
+    const isAuthenticated = useSelector(selectAuthenticated);
+
     return (
         <div className="Hero">
             <div className="hero-logo lime">
@@ -14,7 +18,7 @@ const Hero = () => {
             <div className="hero-content">
                 <h1 className="bold">Welcome to <span className="lime">MovieLand</span></h1>
                 <p>A place to find and rate your favorite movie.</p>
-                <Link to='/login' className="hero-login-btn bold">Login</Link>
+                {!isAuthenticated && <Link to='/login' className="hero-login-btn bold">Login</Link>}
             </div>
         </div>
     )

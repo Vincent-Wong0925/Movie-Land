@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import './login.css';
 import '../../index.css';
 import { Form, Link, useNavigate } from "react-router";
@@ -10,7 +10,7 @@ const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState('');
-    const authenticated = useSelector(selectAuthenticated);
+    const isAuthenticated = useSelector(selectAuthenticated);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -39,6 +39,12 @@ const Login = () => {
             navigate('/login');
         }
     }
+
+    useEffect(() => {
+        if(isAuthenticated) {
+            navigate('/');
+        }
+    }, [isAuthenticated, navigate]);
 
     return (
         <div className="Login page">

@@ -3,8 +3,6 @@ import '../../index.css';
 import './navigation.css';
 import { NavLink } from "react-router";
 
-const placeholder_user_id = '419bc353-fd47-49c4-b190-43682ebdc58d';
-
 const Navigation = () => {
     return (
         <div className="navigation">
@@ -40,7 +38,7 @@ const Navigation = () => {
                 </li>
 
                 <li className="nav-item nav-link">
-                    <NavLink to={`/favorite/${placeholder_user_id}`} className="white">
+                    <NavLink to={`/favorite`} className="white">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="bi bi-heart-fill" viewBox="0 0 16 16">
                             <path fillRule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314" />
                         </svg>

@@ -1,25 +1,38 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import '../login/login.css';
 import '../../index.css';
 import { Form, Link, useNavigate } from "react-router";
 import { registerUser } from "../../api";
+import { useSelector } from "react-redux";
+import { selectAuthenticated } from "../../store/features/userSlice";
 
 const Register = () => {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
+    const isAuthenticated = useSelector(selectAuthenticated);
 
     const handleRegisterSubmit = async (e) => {
         e.preventDefault();
 
         try{
             const response = await registerUser(username, email, password);
+            if (response.error) {
+                throw new Error(response.error);
+            }
+
             navigate('/login');
         } catch(err) {
             console.log(err);
         }
     }
+
+    useEffect(() => {
+        if(isAuthenticated) {
+            navigate('/');
+        }
+    },[isAuthenticated, navigate]);
 
     return (
         <div className="Register page">

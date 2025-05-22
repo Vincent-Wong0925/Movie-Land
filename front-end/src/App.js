@@ -13,7 +13,7 @@ const router = createBrowserRouter(createRoutesFromElements(
     <Route index element={<Home />} />
     <Route path='/detail/:id' element={<Detail />} />
     <Route path='/search' element={<Search />} />
-    <Route path='/favorite/:user_id' element={<Favorite />} />
+    <Route path='/favorite' element={<Favorite />} />
     <Route path='/login' element={<Login />} />
     <Route path='/register' element={<Register />} />
   </Route>

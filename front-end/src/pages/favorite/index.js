@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import './favorite.css';
 import '../../index.css';
-import { Link, useParams } from "react-router";
+import { Link, useNavigate } from "react-router";
+import { useSelector } from "react-redux";
 import { fetchFilmList, fetchTmdbMovie } from "../../api";
+import { selectAuthenticated, selectUser } from "../../store/features/userSlice";
 
 const FavoriteCard = ({ film_id, watched }) => {
     const [film, setFilm] = useState({});
@@ -26,14 +28,20 @@ const FavoriteCard = ({ film_id, watched }) => {
 }
 
 const Favorite = () => {
-    const { user_id } = useParams();
     const [filmList, setFilmList] = useState([]);
+    const user = useSelector(selectUser);
+    const isAuthenticated = useSelector(selectAuthenticated);
+    const navigate = useNavigate();
 
     useEffect(() => {
-        fetchFilmList(user_id)
+        if(!isAuthenticated) {
+            return navigate('/login');
+        }
+        
+        fetchFilmList(user.id)
             .then(response => setFilmList(response.result))
             .catch(err => console.log(err));
-    }, [user_id]);
+    }, [user, isAuthenticated, navigate]);
 
     if (!filmList) {
         return (
