@@ -1,0 +1,57 @@
+.CommentPrompt {
+    border: lime solid 1px;
+    border-radius: 5px;
+    padding: 1rem;
+    box-shadow: 5px 5px 5px green;
+}
+
+.prompt-username {
+    font-size: 1.3rem;
+}
+
+.prompt-star {
+    background-color: transparent;
+    border: none;
+    padding-inline: 3px;
+    cursor: pointer;
+}
+
+.prompt-text {
+    resize: none;
+    width: 100%;
+    margin-block: 1rem;
+    font-size: 1.2rem;
+    background-color: transparent;
+    border: lime solid 1px;
+    border-radius: 5px;
+    padding: 1rem;
+    box-sizing: border-box;
+    color: white;
+}
+
+.prompt-text:focus {
+    outline: none;
+}
+
+.prompt-btn {
+    background-color: transparent;
+    border: lime solid 1px;
+    border-radius: 2rem;
+    color: lime;
+    padding-inline: 1rem;
+    padding-block: .5rem;
+    transition: .3s;
+    cursor: pointer;
+}
+
+.prompt-btn:hover {
+    background-color: lime;
+    color: #3f3f3f;
+    transform: scale(1.05);
+}
+
+.prompt-btn:active {
+    background-color: green;
+    border-color: green;
+    transform: scale(0.95);
+}

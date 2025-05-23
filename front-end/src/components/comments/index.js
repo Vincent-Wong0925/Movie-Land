@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import './comments.css';
 import '../../index.css';
 import { fetchComments } from "../../api";
+import CommentPrompt from "../commentPrompt";
 
 const ScoreStar = ({ score }) => {
     return (
@@ -37,6 +38,7 @@ const Comments = ({ movie_id }) => {
     return (
         <div className="Comments">
             <h1 className="lime">Comments</h1>
+            <CommentPrompt />
             {!comments.length ? <div>No comments yet</div> : comments.map(comment =>
                 <div className="comment-card" id={comment.user_id}>
                     <div className="comment-card-item">{comment.username}</div>
