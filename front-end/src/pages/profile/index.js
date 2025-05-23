@@ -4,7 +4,8 @@ import '../../index.css';
 import { useDispatch, useSelector } from "react-redux";
 import { selectAuthenticated, selectUser, setAuthenticated, setUser } from "../../store/features/userSlice";
 import { useNavigate } from "react-router";
-import { fetchUser, logoutUser } from "../../api";
+import { logoutUser } from "../../api";
+import { checkAuthenticated } from "../../util";
 
 const Profile = () => {
     const user = useSelector(selectUser);
@@ -13,19 +14,7 @@ const Profile = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        fetchUser()
-            .then(response => {
-                if (response.error) {
-                    throw new Error(response.error);
-                }
-                dispatch(setUser(response));
-                dispatch(setAuthenticated(true));
-            })
-            .catch(err => {
-                console.log(err);
-                dispatch(setAuthenticated(false));
-                dispatch(setUser({}));
-            })
+        checkAuthenticated();
 
         if (!isAuthenticated) {
             navigate('/login');

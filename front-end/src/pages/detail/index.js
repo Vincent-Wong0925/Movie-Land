@@ -4,18 +4,24 @@ import '../../index.css';
 import { useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { getMovieById, selectSearch, selectSearchLoading } from "../../store/features/searchSlice";
+import { selectUser } from '../../store/features/userSlice';
 import Comments from "../../components/comments";
+import { checkAuthenticated } from "../../util";
 
 const Detail = () => {
     const { id } = useParams();
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(getMovieById(id));
-    }, [dispatch, id]);
-
     const movie = useSelector(selectSearch);
     const movieLoading = useSelector(selectSearchLoading);
+    const user = useSelector(selectUser);
+
+
+    useEffect(() => {
+        checkAuthenticated();
+
+        dispatch(getMovieById(id));
+    }, [dispatch, id]);
 
 
     if (movieLoading) {
