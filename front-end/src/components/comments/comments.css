@@ -25,3 +25,8 @@
 .scoreStar .star {
     margin-right: 5px;
 }
+
+.no-comment {
+    margin-block: 1rem;
+    font-size: 1.3rem;
+}

@@ -13,4 +13,5 @@ export const checkAuthenticated = () => {
             setUser(response);
             setAuthenticated(true);
         })
+        .catch(err => console.log(err));
 }

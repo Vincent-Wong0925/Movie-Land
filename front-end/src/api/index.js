@@ -17,6 +17,113 @@ export const fetchComments = async (film_id) => {
     }
 }
 
+export const fetchUserComments = async (user_id, film_id) => {
+    try {
+        const queryString = new URLSearchParams({ user_id, film_id });
+        const response = await fetch(`${baseURL}/comment?${queryString}`, {
+            method: 'GET',
+            credentials: 'include',
+        })
+        const jsonResponse = await response.json();
+
+        if (jsonResponse.error) {
+            throw new Error(jsonResponse.error);
+        }
+
+        return (jsonResponse.result);
+    } catch (err) {
+        return ({ error: err });
+    }
+}
+
+export const addComment = async (user_id, film_id, score, comment) => {
+    try {
+        if (!user_id || !film_id || !score || !comment) {
+            throw new Error('Missing information');
+        }
+        const response = await fetch(`${baseURL}/comment`, {
+            method: 'POST',
+            credentials: 'include',
+            headers: {
+                'Content-type': 'application/json',
+                accept: 'application/json',
+            },
+            body: JSON.stringify({
+                user_id,
+                film_id,
+                score,
+                comment
+            })
+        });
+        const jsonResponse = await response.json();
+        if (jsonResponse.error) {
+            throw new Error(jsonResponse.error);
+        }
+
+        return jsonResponse;
+    } catch (err) {
+        return ({ error: err });
+    }
+}
+
+export const updateComment = async (user_id, film_id, score, comment) => {
+    try {
+        if (!user_id || !film_id || !score || !comment) {
+            throw new Error('Missing information');
+        }
+        const response = await fetch(`${baseURL}/comment`, {
+            method: 'PUT',
+            credentials: 'include',
+            headers: {
+                'Content-type': 'application/json',
+                accept: 'application/json'
+            },
+            body: JSON.stringify({
+                user_id,
+                film_id,
+                score,
+                comment
+            })
+        });
+        const jsonResponse = await response.json();
+        if (jsonResponse.error) {
+            throw new Error(jsonResponse.error);
+        }
+
+        return jsonResponse;
+    } catch (err) {
+        return ({ error: err });
+    }
+}
+
+export const deleteComment = async (user_id, film_id) => {
+    try {
+        if (!user_id || !film_id) {
+            throw new Error('Missing information');
+        }
+        const response = await fetch(`${baseURL}/comment`, {
+            method: 'DELETE',
+            credentials: 'include',
+            headers: {
+                'Content-type': 'application/json',
+                accept: 'application/json'
+            },
+            body: JSON.stringify({
+                user_id,
+                film_id,
+            })
+        });
+        const jsonResponse = await response.json();
+        if (jsonResponse.error) {
+            throw new Error(jsonResponse.error);
+        }
+
+        return jsonResponse;
+    } catch (err) {
+        return ({ error: err });
+    }
+}
+
 export const fetchFilmList = async (user_id) => {
     const response = await fetch(`${baseURL}/filmList/${user_id}`, {
         method: 'GET',

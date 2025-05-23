@@ -5,8 +5,9 @@
     box-shadow: 5px 5px 5px green;
 }
 
-.prompt-username {
-    font-size: 1.3rem;
+.prompt-heading {
+    font-size: 1.5rem;
+    margin-block: 1rem;
 }
 
 .prompt-star {
@@ -27,6 +28,7 @@
     padding: 1rem;
     box-sizing: border-box;
     color: white;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 .prompt-text:focus {
@@ -53,5 +55,28 @@
 .prompt-btn:active {
     background-color: green;
     border-color: green;
+    transform: scale(0.95);
+}
+
+.prompt-delete-btn {
+    background-color: transparent;
+    border: red solid 1px;
+    border-radius: 2rem;
+    color: red;
+    padding-inline: 1rem;
+    padding-block: .5rem;
+    transition: .3s;
+    cursor: pointer;
+}
+
+.prompt-delete-btn:hover {
+    background-color: red;
+    color: #3f3f3f;
+    transform: scale(1.05);
+}
+
+.prompt-delete-btn:active {
+    background-color: darkred;
+    border-color: darkred;
     transform: scale(0.95);
 }

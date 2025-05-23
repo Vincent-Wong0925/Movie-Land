@@ -3,8 +3,11 @@ import './comments.css';
 import '../../index.css';
 import { fetchComments } from "../../api";
 import CommentPrompt from "../commentPrompt";
+import { useSelector } from "react-redux";
+import { selectAuthenticated } from "../../store/features/userSlice";
+import { checkAuthenticated } from '../../util';
 
-const ScoreStar = ({ score }) => {
+export const ScoreStar = ({ score }) => {
     return (
         <span className="scoreStar">
             {Array.from({ length: score }).map(i =>
@@ -26,20 +29,21 @@ const ScoreStar = ({ score }) => {
 
 const Comments = ({ movie_id }) => {
     const [comments, setComments] = useState([]);
+    const isAuthenticated = useSelector(selectAuthenticated);
 
     useEffect(() => {
         fetchComments(movie_id)
             .then(response => setComments(response.result))
             .catch(err => console.log(err));
+        
+        checkAuthenticated();
     }, [movie_id]);
-
-    console.log(comments);
 
     return (
         <div className="Comments">
             <h1 className="lime">Comments</h1>
-            <CommentPrompt />
-            {!comments.length ? <div>No comments yet</div> : comments.map(comment =>
+            {isAuthenticated && <CommentPrompt movie_id={movie_id} setComments={setComments} />}
+            {!comments.length ? <div className="no-comment">No comments yet</div> : comments.map(comment =>
                 <div className="comment-card" id={comment.user_id}>
                     <div className="comment-card-item">{comment.username}</div>
                     <ScoreStar className="comment-card-item" score={comment.score} />

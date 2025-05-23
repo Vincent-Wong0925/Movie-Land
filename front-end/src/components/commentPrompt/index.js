@@ -1,6 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import './commentPrompt.css';
 import '../../index.css';
+import { useSelector } from "react-redux";
+import { selectAuthenticated, selectUser } from '../../store/features/userSlice';
+import { addComment, deleteComment, fetchUserComments, updateComment } from "../../api";
+import { ScoreStar } from "../comments";
 
 const PromptStar = ({ value, score, setScore }) => {
     return (
@@ -17,18 +21,100 @@ const PromptStar = ({ value, score, setScore }) => {
         </button >)
 }
 
-const CommentPrompt = () => {
+const CommentPrompt = ({movie_id, setComments}) => {
     const [score, setScore] = useState(0);
     const [comment, setComment] = useState('');
+    const [myComment, setMyComment] = useState({});
+    const [editMode, setEditMode] = useState(false);
+    const [update, setUpdate] = useState(true);
+
+    const user = useSelector(selectUser);
+    const isAuthenticated = useSelector(selectAuthenticated);
+
+    useEffect(() => {
+        if (isAuthenticated) {
+            fetchUserComments(user.id, movie_id)
+            .then(response => {
+                if (response.error) {
+                    throw new Error(response.error);
+                }
+                if (response.rowCount !== 0) {
+                    setEditMode(true);
+                    setMyComment(response.rows[0]);
+                } else {
+                    setEditMode(false);
+                }
+            })
+            .catch(err => console.log(err));
+        }
+    }, [isAuthenticated, movie_id, user, update]);
+
+    const handleSubmitComment = () => {
+        if (score === 0 || comment === '') {
+            return alert('Missing information');
+        }
+        
+        addComment(user.id, movie_id, score, comment)
+        .then(response => {
+            if (response.error) {
+                throw new Error(response.error);
+            }
+            setComments(response.result);
+            setComment('');
+            setScore(0);
+            setUpdate(state => !state);
+        })
+        .catch(err => console.log(err));
+    }
+
+    const handleUpdateComment = () => {
+        if (score === 0 || comment === '') {
+            return alert('Missing information');
+        }
+        
+        updateComment(user.id, movie_id, score, comment)
+        .then(response => {
+            if (response.error) {
+                throw new Error(response.error);
+            }
+            setComments(response.result);
+            setComment('');
+            setScore(0);
+            setUpdate(state => !state);
+        })
+        .catch(err => console.log(err));
+    }
+
+    const handleDeleteComment = () => {
+        deleteComment(user.id, movie_id)
+        .then(response => {
+            if (response.error) {
+                throw new Error(response.error);
+            }
+            setComments(response.result);
+            setUpdate(state => !state);
+        })
+        .catch(err => console.log(err));
+    }
 
     return (
         <div className="CommentPrompt">
-            <div className="prompt-username">Placeholder name</div>
+            <div className="prompt-heading">{user.username}</div>
             {Array(5).fill(0).map((_, idx) =>
                 <PromptStar value={idx + 1} score={score} setScore={setScore} />
             )}
-            <br /><textarea className="prompt-text" value={comment} onChange={(e) => setComment(e.target.value)} placeholder="Leave a comment" rows='5' />
-            <button className="prompt-btn">Submit</button>
+            <br /><textarea className="prompt-text" value={comment} onChange={(e) => setComment(e.target.value)} placeholder={editMode ? 'Edit your comment' : 'Leave a comment'} rows='5' />
+            <button className="prompt-btn" onClick={editMode ? handleUpdateComment : handleSubmitComment}>Submit</button>
+            {editMode && 
+            <div className="previous-comment">
+                <div className="prompt-heading">Your comment</div>
+                <div className="comment-card" id={myComment.user_id}>
+                    <div className="comment-card-item">{myComment.username}</div>
+                    <ScoreStar className="comment-card-item" score={myComment.score} />
+                    <div className="comment-card-item comment-card-body">{myComment.comment}</div>
+                </div>
+                <button className="prompt-delete-btn" onClick={handleDeleteComment}>Delete comment</button>
+            </div>}
         </div>
     )
 }
