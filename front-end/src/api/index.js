@@ -18,20 +18,16 @@ export const fetchComments = async (film_id) => {
 }
 
 export const fetchFilmList = async (user_id) => {
-    try {
-        const response = await fetch(`${baseURL}/filmList/${user_id}`, { 
-            method: 'GET',
-            credentials: 'include'
-        });
-        const jsonResponse = await response.json();
+    const response = await fetch(`${baseURL}/filmList/${user_id}`, {
+        method: 'GET',
+        credentials: 'include'
+    });
+    const jsonResponse = await response.json();
 
-        if (!jsonResponse.error) {
-            return jsonResponse;
-        } else {
-            throw new Error(jsonResponse.error);
-        }
-    } catch (err) {
-        return ({ error: err });
+    if (!jsonResponse.error) {
+        return jsonResponse.result;
+    } else {
+        throw new Error(jsonResponse.error);
     }
 }
 
@@ -96,14 +92,14 @@ export const logoutUser = async () => {
             method: 'GET',
             credentials: 'include',
         });
-        
+
         if (response.error) {
             throw new Error(response.error);
         }
 
         return ('Logout successfully');
-    } catch(err) {
-        return ({error: err});
+    } catch (err) {
+        return ({ error: err });
     }
 }
 
@@ -119,7 +115,7 @@ export const fetchUser = async () => {
             throw new Error(jsonResponse.error);
         }
         return jsonResponse;
-    } catch(err) {
-        return ({error: err});
+    } catch (err) {
+        return ({ error: err });
     }
 }

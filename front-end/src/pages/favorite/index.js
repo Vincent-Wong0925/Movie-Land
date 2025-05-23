@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import './favorite.css';
 import '../../index.css';
 import { Link, useNavigate } from "react-router";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { fetchFilmList, fetchTmdbMovie } from "../../api";
 import { selectAuthenticated, selectUser } from "../../store/features/userSlice";
+import { getFilmList, selectFavorite } from "../../store/features/favoriteSlice";
 
 const FavoriteCard = ({ film_id, watched }) => {
     const [film, setFilm] = useState({});
@@ -28,20 +29,24 @@ const FavoriteCard = ({ film_id, watched }) => {
 }
 
 const Favorite = () => {
-    const [filmList, setFilmList] = useState([]);
+    //const [filmList, setFilmList] = useState([]);
     const user = useSelector(selectUser);
     const isAuthenticated = useSelector(selectAuthenticated);
+    const filmList = useSelector(selectFavorite);
+    const dispatch = useDispatch();
     const navigate = useNavigate();
 
     useEffect(() => {
         if(!isAuthenticated) {
             navigate('/login');
         }
+
+        dispatch(getFilmList(user.id));
         
-        fetchFilmList(user.id)
+        /*fetchFilmList(user.id)
             .then(response => setFilmList(response.result))
-            .catch(err => console.log(err));
-    }, [user, isAuthenticated, navigate]);
+            .catch(err => console.log(err));*/
+    }, [user, isAuthenticated, navigate, dispatch]);
 
     if (!filmList) {
         return (
