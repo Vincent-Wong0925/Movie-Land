@@ -23,3 +23,35 @@
 .detail-tagline {
     color: lightgray;
 }
+
+.detail-favorite-btn {
+    background-color: transparent;
+    border: lime solid 2px;
+    border-radius: 2rem;
+    color: lime;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding-block: .5rem;
+    padding-inline: 1rem;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1rem;
+    transition: .3s;
+}
+
+.detail-favorite-btn:hover {
+    background-color: lime;
+    color: #3f3f3f;
+    transform: scale(1.05);
+}
+
+.detail-favorite-btn:active {
+    background-color: green;
+    border-color: green;
+    transform: scale(0.95);
+}
+
+.detail-favorite-btn span {
+    margin-left: .5rem;
+    text-wrap-mode: nowrap;
+}

@@ -1,28 +1,56 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import './detail.css';
 import '../../index.css';
 import { useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { getMovieById, selectSearch, selectSearchLoading } from "../../store/features/searchSlice";
-import { selectUser } from '../../store/features/userSlice';
+import { selectAuthenticated, selectUser } from '../../store/features/userSlice';
 import Comments from "../../components/comments";
 import { checkAuthenticated } from "../../util";
+import { addToFilmList, fetchFilmFromList } from "../../api";
 
 const Detail = () => {
     const { id } = useParams();
     const dispatch = useDispatch();
+    const [inList, setInList] = useState(false);
+    const [update, setUpdate] = useState(true);
 
     const movie = useSelector(selectSearch);
     const movieLoading = useSelector(selectSearchLoading);
     const user = useSelector(selectUser);
+    const isAuthenticated = useSelector(selectAuthenticated);
 
 
     useEffect(() => {
         checkAuthenticated();
 
         dispatch(getMovieById(id));
-    }, [dispatch, id]);
 
+        fetchFilmFromList(user.id, id)
+            .then(response => {
+                if (response.error) {
+                    throw new Error(response.error);
+                }
+
+                if (response.length === 0) {
+                    setInList(false);
+                } else {
+                    setInList(true);
+                }
+            })
+            .catch(err => console.log(err));
+    }, [dispatch, id, user, update]);
+
+    const handleAddToFavorite = () => {
+        addToFilmList(user.id, movie.id)
+            .then(response => {
+                if (response.error) {
+                    throw new Error(response.error);
+                }
+                setUpdate(state => !state);
+            })
+            .catch(err => console.log(err));
+    }
 
     if (movieLoading) {
         return (
@@ -40,6 +68,15 @@ const Detail = () => {
                     <h1 className="detail-title lime">{movie.title}</h1>
                     <span className="detail-misc">{movie.release_date} | {!movie.genres ? 'unknown genres' : Array.prototype.map.call(movie.genres, s => s.name).join(', ')} | {movie.runtime} minutes</span>
                     <p className="detail-score">Score: {(movie.vote_average * 10).toFixed(1)}%</p>
+
+                    {isAuthenticated && !inList &&
+                        <button className="detail-favorite-btn" onClick={handleAddToFavorite}>
+                            <svg xmlns="http://www.w3.org/2000/svg" height='24' fill="currentColor" className="bi bi-heart-fill" viewBox="0 0 16 16">
+                                <path fillRule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314" />
+                            </svg>
+                            <span>Add to favorite</span>
+                        </button>}
+
                     <h2 className="lime">Overview</h2>
                     <p className="detail-tagline">{movie.tagline}</p>
                     <p className="detail-overview">{movie.overview}</p>
