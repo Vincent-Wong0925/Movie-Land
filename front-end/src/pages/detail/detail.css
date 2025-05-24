@@ -39,6 +39,11 @@
     transition: .3s;
 }
 
+.fill {
+    background-color: lime;
+    color: #3f3f3f;
+}
+
 .detail-favorite-btn:hover {
     background-color: lime;
     color: #3f3f3f;

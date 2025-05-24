@@ -182,6 +182,36 @@ export const addToFilmList = async (user_id, film_id) => {
     }
 }
 
+export const deleteFromList = async (user_id, film_id) => {
+    if (!user_id || !film_id) {
+        return {error: 'missing information'}
+    }
+
+    try {
+        const response = await fetch(`${baseURL}/filmList`, {
+            method: 'DELETE',
+            credentials: 'include',
+            headers: {
+                'Content-type': 'application/json',
+                accept: 'application/json'
+            },
+            body: JSON.stringify({
+                user_id,
+                film_id
+            })
+        });
+        const jsonResponse = await response.json();
+
+        if(jsonResponse.error) {
+            throw new Error(jsonResponse.error);
+        }
+
+        return jsonResponse.result;
+    } catch(err) {
+        return {error: err};
+    }
+}
+
 export const fetchTmdbMovie = async (film_id) => {
     const url = `https://api.themoviedb.org/3/movie/${film_id}?language=en-US`;
     const options = {
