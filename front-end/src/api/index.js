@@ -182,6 +182,32 @@ export const addToFilmList = async (user_id, film_id) => {
     }
 }
 
+export const updateWatched = async (user_id, film_id, watched) => {
+    try {
+        const response = await fetch(`${baseURL}/filmList`, {
+            method: 'PUT',
+            credentials: 'include',
+            headers: {
+                'Content-type': 'application/json',
+                accept: 'application/json'
+            },
+            body: JSON.stringify({
+                user_id,
+                film_id,
+                watched
+            })
+        });
+        const jsonResponse = await response.json();
+
+        if(jsonResponse.error) {
+            throw new Error(jsonResponse.error);
+        }
+        return jsonResponse.result;
+    } catch(err) {
+        return {error: err};
+    }
+}
+
 export const deleteFromList = async (user_id, film_id) => {
     if (!user_id || !film_id) {
         return {error: 'missing information'}

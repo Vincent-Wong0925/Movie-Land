@@ -7,12 +7,13 @@ import { getMovieById, selectSearch, selectSearchLoading } from "../../store/fea
 import { selectAuthenticated, selectUser } from '../../store/features/userSlice';
 import Comments from "../../components/comments";
 import { checkAuthenticated } from "../../util";
-import { addToFilmList, deleteFromList, fetchFilmFromList } from "../../api";
+import { addToFilmList, deleteFromList, fetchFilmFromList, updateWatched } from "../../api";
 
 const Detail = () => {
     const { id } = useParams();
     const dispatch = useDispatch();
     const [inList, setInList] = useState(false);
+    const [watched, setWatched] = useState(false);
     const [update, setUpdate] = useState(true);
 
     const movie = useSelector(selectSearch);
@@ -36,6 +37,7 @@ const Detail = () => {
                     setInList(false);
                 } else {
                     setInList(true);
+                    setWatched(response[0].watched);
                 }
             })
             .catch(err => console.log(err));
@@ -63,12 +65,16 @@ const Detail = () => {
             .catch(err => console.log(err));
     }
 
-    if (movieLoading) {
-        return (
-            <div className="Loading page">
-                Loading
-            </div>
-        )
+    const handleUpdateWatched = () => {
+        updateWatched(user.id, movie.id, !watched)
+            .then(response => {
+                if (response.error) {
+                    throw new Error(response.error);
+                }
+                setWatched(state => !state);
+                setUpdate(state => !state);
+            })
+            .catch(err => console.log(err));
     }
 
     return (
@@ -88,6 +94,17 @@ const Detail = () => {
                                 </svg>
                                 <span>{inList ? 'Remove from favorite' : 'Add to favorite'}</span>
                             </button>
+
+                            {inList &&
+                                <button className={`detail-watched-btn ${watched && 'watched'}`} onClick={handleUpdateWatched}>
+                                    {watched &&
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="18" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
+                                            <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425z" />
+                                        </svg>
+                                    }
+                                    Watched
+                                </button>
+                            }
                         </div>}
 
                     <h2 className="lime">Overview</h2>

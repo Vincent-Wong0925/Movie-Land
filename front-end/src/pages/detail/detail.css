@@ -24,6 +24,10 @@
     color: lightgray;
 }
 
+.detail-btn-container {
+    display: flex;
+}
+
 .detail-favorite-btn {
     background-color: transparent;
     border: lime solid 2px;
@@ -59,4 +63,37 @@
 .detail-favorite-btn span {
     margin-left: .5rem;
     text-wrap-mode: nowrap;
+}
+
+.detail-watched-btn {
+    background-color: transparent;
+    border: white solid 2px;
+    border-radius: 2rem;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding-block: .5rem;
+    padding-inline: 1rem;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1rem;
+    transition: .3s;
+    margin-left: 2rem;
+}
+
+.watched {
+    border-color: lime;
+    color: lime;
+}
+
+.detail-watched-btn:hover {
+    border-color: lime;
+    color: lime;
+    transform: scale(1.05);
+}
+
+.detail-watched-btn:active {
+    border-color: green;
+    color: green;
+    transform: scale(0.95);
 }
