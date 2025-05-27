@@ -6,11 +6,11 @@
     color: white;
     align-items: center;
     border-radius: 5px;
-    height: 10rem;
+    min-height: 10rem;
 }
 
 .search-card-img {
-    height: 100%;
+    height: 10rem;
     margin-right: 1rem;
     border-radius: 5px 0 0 5px;
 }
@@ -21,4 +21,14 @@
 
 .search-card-item {
     margin: 0;
+}
+
+@media screen and (max-width: 850px) {
+    .search-card {
+        margin-inline: 1rem;
+    }
+
+    .search-card-title {
+        font-size: 1.5rem;
+    }
 }
