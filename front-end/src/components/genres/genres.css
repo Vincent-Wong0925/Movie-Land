@@ -1,12 +1,12 @@
 .Genres-container {
     width: 100%;
-    padding-inline: 3rem;
-    padding-bottom: 2rem;
+    padding-inline: 2rem;
+    padding-bottom: 1.5rem;
     box-sizing: border-box;
 }
 
 .genres-card {
-    padding: 1rem;
+    padding: .5rem;
     box-sizing: border-box;
 }
 
@@ -32,4 +32,10 @@
 
 .genres-link:active {
     transform: scale(0.95);
+}
+
+@media screen and (max-width: 850px) {
+    .Genres-container {
+        padding-bottom: 0;
+    }
 }

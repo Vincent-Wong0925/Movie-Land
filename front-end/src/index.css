@@ -28,3 +28,10 @@ ul {
     padding-top: 3.5rem;
     box-sizing: border-box;
 }
+
+@media screen and (max-width: 850px) {
+    .page {
+        padding-left: 0;
+        padding-bottom: 5rem;
+    }
+}

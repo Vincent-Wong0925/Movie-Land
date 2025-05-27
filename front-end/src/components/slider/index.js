@@ -23,12 +23,12 @@ const FilmSlider = ({ films }) => {
                 }
             },
             {
-                breakpoint: 900,
+                breakpoint: 850,
                 settings: {
                     slidesToShow: 2,
                     slidesToScroll: 2,
                     infinite: true,
-                    dots: true
+                    dots: false
                 }
             },
             {
@@ -36,6 +36,7 @@ const FilmSlider = ({ films }) => {
                 settings: {
                     slidesToShow: 1,
                     slidesToScroll: 1,
+                    dots: false
                 }
             },
         ]

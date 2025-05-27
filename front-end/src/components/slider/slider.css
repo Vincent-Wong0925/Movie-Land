@@ -1,6 +1,12 @@
 .FilmSlider {
     width: 100%;
-    padding-inline: 3rem;
+    padding-inline: 2rem;
     padding-bottom: 2rem;
     box-sizing: border-box;
+}
+
+@media screen and (max-width: 850px) {
+    .FilmSlider {
+        padding-bottom: 0;
+    }
 }

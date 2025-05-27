@@ -8,7 +8,7 @@ import { createSearchParams, Link } from "react-router";
 const Genres = ({ genres }) => {
     const settings = {
         speed: 500,
-        rows: 2,
+        rows: 3,
         slidesPerRow: 3,
         dots: true,
         responsive: [
@@ -25,13 +25,14 @@ const Genres = ({ genres }) => {
                 settings: {
                     slidesPerRow: 2,
                     infinite: true,
-                    dots: true
+                    dots: false
                 }
             },
             {
                 breakpoint: 600,
                 settings: {
                     slidesPerRow: 1,
+                    dots: false
                 }
             },
         ]

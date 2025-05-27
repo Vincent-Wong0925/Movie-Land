@@ -54,3 +54,30 @@
     visibility: visible;
     opacity: 1;
 }
+
+@media screen and (max-width: 850px) {
+    .navigation {
+        bottom: 0;
+        top: auto;
+        left: 0;
+        height: 3rem;
+        width: 100%;
+        padding-block: .3rem;
+    }
+
+    .nav-list {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .nav-item {
+    margin: 0;
+    height: 1.5rem;
+    width: 1.5rem;
+    padding: .5rem;
+}
+
+    .nav-logo {
+        display: none;
+    }
+}
