@@ -22,6 +22,8 @@
 
 .favorite-card-container {
     width: 100%;
+    display: flex;
+    justify-content: space-between;
 }
 
 .favorite-card-title {
@@ -44,4 +46,20 @@
     padding: .5rem;
     border-radius: 5px;
     font-weight: bold;
+}
+
+@media screen and (max-width: 850px) {
+    .favorite-card-container {
+        flex-direction: column;
+    }
+
+    .favorite-card-title {
+        font-size: 1.5rem;
+    }
+
+    .favorite-card-watched {
+        padding: 0;
+        width: fit-content;
+        margin-top: .5rem;
+    }
 }

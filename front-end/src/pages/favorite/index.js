@@ -20,18 +20,21 @@ const FavoriteCard = ({ film_id, watched }) => {
         <Link className="favorite-card" to={`/detail/${film.id}`}>
             <img className="favorite-card-img" src={`https://image.tmdb.org/t/p/w500${film.poster_path}`} alt="movie poster" />
             <div className="favorite-card-container">
-                <p className="favorite-card-item favorite-card-title">{film.title}</p>
-                <p className="favorite-card-item favorite-card-release">{film.release_date}</p>
-                <p className="favorite-card-item favorite-card-score">Score: {(film.vote_average * 10).toFixed(1)}%</p>
-            </div>
-            <div className="favorite-card-watched">
-                {watched &&
-                <div className="favorite-card-watched-container">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="18" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
-                        <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425z" />
-                    </svg>
-                    Watched
-                </div>}
+                <div className="favorite-card-info">
+                    <p className="favorite-card-item favorite-card-title">{film.title}</p>
+                    <p className="favorite-card-item favorite-card-release">{film.release_date}</p>
+                    <p className="favorite-card-item favorite-card-score">Score: {(film.vote_average * 10).toFixed(1)}%</p>
+                </div>
+
+                <div className="favorite-card-watched">
+                    {watched &&
+                        <div className="favorite-card-watched-container">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="18" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
+                                <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425z" />
+                            </svg>
+                            Watched
+                        </div>}
+                </div>
             </div>
         </Link>
     )
