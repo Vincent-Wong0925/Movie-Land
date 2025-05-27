@@ -4,7 +4,7 @@
 }
 
 .detail-poster {
-    height: 30rem;
+    max-width: 20rem;
     margin-right: 2rem;
 }
 
@@ -41,6 +41,7 @@
     font-family: 'Times New Roman', Times, serif;
     font-size: 1rem;
     transition: .3s;
+    width: fit-content;
 }
 
 .fill {
@@ -79,6 +80,7 @@
     font-size: 1rem;
     transition: .3s;
     margin-left: 2rem;
+    width: fit-content;
 }
 
 .watched {
@@ -96,4 +98,28 @@
     border-color: green;
     color: green;
     transform: scale(0.95);
+}
+
+@media screen and (max-width: 850px) {
+    .detail-container {
+        flex-direction: column;
+    }
+
+    .detail-poster {
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    .detail-btn-container {
+        flex-direction: column;
+    }
+
+    .detail-favorite-btn {
+        margin-block: .5rem;
+    }
+
+    .detail-watched-btn {
+        margin-block: .5rem;
+        margin-left: 0;
+    }
 }
