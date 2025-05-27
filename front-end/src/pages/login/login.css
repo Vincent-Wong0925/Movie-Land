@@ -3,7 +3,7 @@
     border-radius: 5px;
     box-shadow: 5px 5px 5px green;
     margin: 4rem auto;
-    width: 30rem;
+    max-width: 30rem;
     padding: 2rem;
     color: lime;
     font-size: 1.5rem;
@@ -23,6 +23,7 @@
     width: 100%;
     margin-bottom: 1rem;
     font-size: 1.5rem;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 .login-input:focus {
@@ -67,4 +68,27 @@
     color: red;
     margin: 0;
     font-size: 1rem;
+}
+
+@media screen and (max-width: 850px) {
+    .login-container {
+        margin-inline: 1rem;
+        padding: 2rem;
+        max-width: none;
+    }
+
+    .login-container h1 {
+        font-size: 1.7rem;
+    }
+
+    .login-label {
+        font-size: 1rem;
+    }
+
+    .login-btn {
+        font-size: 1rem;
+        padding-block: .5rem;
+        width: 100%;
+        margin: .5rem auto;
+    }
 }
