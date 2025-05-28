@@ -1,17 +1,18 @@
 import { fetchUser } from "../api";
 import { setUser, setAuthenticated } from "../store/features/userSlice";
 
-export const checkAuthenticated = () => {
+export const checkAuthenticated = (dispatch) => {
     fetchUser()
         .then(response => {
             if (response.error) {
-                setUser({});
-                setAuthenticated(false);
+                dispatch(setUser({}));
+                dispatch(setAuthenticated(false));
+
                 throw new Error(response.error);
             }
 
-            setUser(response);
-            setAuthenticated(true);
+            dispatch(setUser(response));
+            dispatch(setAuthenticated(true));
         })
         .catch(err => console.log(err));
 }

@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getPopular, selectPopular } from "../../store/features/popularSlice";
 import { getTopRated, selectTopRated } from "../../store/features/topRatedSlice";
 import { getGenres, selectGenres } from "../../store/features/genreSlice";
+import { checkAuthenticated } from "../../util";
 
 const Home = () => {
     const dispatch = useDispatch();
@@ -16,6 +17,7 @@ const Home = () => {
         dispatch(getPopular());
         dispatch(getTopRated());
         dispatch(getGenres());
+        checkAuthenticated(dispatch);
     }, [dispatch]);
 
     const popular = useSelector(selectPopular);

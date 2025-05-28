@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchTmdbMovie } from "../../api";
 import { selectAuthenticated, selectUser } from "../../store/features/userSlice";
 import { getFilmList, selectFavorite } from "../../store/features/favoriteSlice";
+import { checkAuthenticated } from "../../util";
 
 const FavoriteCard = ({ film_id, watched }) => {
     const [film, setFilm] = useState({});
@@ -48,12 +49,13 @@ const Favorite = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
+        checkAuthenticated(dispatch);
         if (!isAuthenticated) {
             navigate('/login');
         }
 
         dispatch(getFilmList(user.id));
-    }, [user, isAuthenticated, navigate, dispatch]);
+    }, [isAuthenticated, navigate, dispatch]);
 
     if (!filmList) {
         return (

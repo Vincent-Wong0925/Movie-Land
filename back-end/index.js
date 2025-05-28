@@ -1,6 +1,7 @@
 const express = require('express');
 const session = require('express-session');
 const cors = require('cors');
+const dotenv = require('dotenv');
 const filmRouter = require('./routes/filmRouter');
 const commentRouter = require('./routes/commentRouter');
 const passport = require('passport');
@@ -9,6 +10,8 @@ const { ensureAuthenticated } = require('./middleware/auth');
 
 const app = express();
 const port = 3000;
+
+dotenv.config();
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));

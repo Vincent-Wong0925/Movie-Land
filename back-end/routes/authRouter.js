@@ -48,6 +48,12 @@ authRouter.post('/login', async (req, res, next) => {
     })(req, res)
 });
 
+authRouter.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email']}));
+
+authRouter.get('/auth/google/callback', passport.authenticate('google', {failureRedirect: false}), (req, res, next) => {
+    res.redirect('http://localhost:3001');
+});
+
 authRouter.get('/logout', (req, res) => {
     req.logout((error) => {
         if(error) {
