@@ -14,6 +14,8 @@ const port = 3000;
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
+app.set('trust proxy', 1);
+
 app.use(cors({
   origin: process.env.FRONTEND_URL,
   credentials: true,
@@ -26,7 +28,7 @@ app.use(session({
   cookie: {
     maxAge: 1000*60*60*24,
     sameSite: 'none',
-    secure: false,
+    secure: true,
     httpOnly: true,
   }
 }));
