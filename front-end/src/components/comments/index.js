@@ -3,7 +3,7 @@ import './comments.css';
 import '../../index.css';
 import { fetchComments } from "../../api";
 import CommentPrompt from "../commentPrompt";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectAuthenticated } from "../../store/features/userSlice";
 import { checkAuthenticated } from '../../util';
 
@@ -30,13 +30,19 @@ export const ScoreStar = ({ score }) => {
 const Comments = ({ movie_id }) => {
     const [comments, setComments] = useState([]);
     const isAuthenticated = useSelector(selectAuthenticated);
+    const dispatch = useDispatch();
 
     useEffect(() => {
         fetchComments(movie_id)
-            .then(response => setComments(response.result))
+            .then(response => {
+                if (response.error) {
+                    throw new Error(response.error);
+                }
+                setComments(response.result);
+            })
             .catch(err => console.log(err));
         
-        checkAuthenticated();
+        checkAuthenticated(dispatch);
     }, [movie_id]);
 
     return (

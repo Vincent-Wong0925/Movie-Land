@@ -23,7 +23,7 @@ const Detail = () => {
 
 
     useEffect(() => {
-        checkAuthenticated();
+        checkAuthenticated(dispatch);
 
         dispatch(getMovieById(id));
 
@@ -41,7 +41,7 @@ const Detail = () => {
                 }
             })
             .catch(err => console.log(err));
-    }, [dispatch, id, user, update]);
+    }, [dispatch, id, update]);
 
     const handleAddToFavorite = () => {
         addToFilmList(user.id, movie.id)
