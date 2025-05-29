@@ -1,4 +1,4 @@
-const baseURL = 'http://localhost:3000';
+const baseURL = 'https://movie-land-server.onrender.com';
 
 export const fetchComments = async (film_id) => {
     try {
